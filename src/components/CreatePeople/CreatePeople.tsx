@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { IState as Props } from './../../screens/Home/Home';
 
-interface IProps {
+export interface IProps {
   people: Props['people'];
   setPeople: React.Dispatch<React.SetStateAction<Props['people']>>;
 }
