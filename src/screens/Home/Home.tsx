@@ -1,34 +1,11 @@
-import CreatePeople from '../../components/CreatePeople/CreatePeople';
-import ShowPeople from './../../components/ShowPeople/ShowPeople';
 import useLocalStorage from './../../helpers/useLocalStorage';
 
-interface IProps {
-  message?: string;
-}
+interface IProps {}
 
-export interface IState {
-  people: {
-    name: string;
-    age: number;
-    url: string;
-    note?: string;
-  }[];
-}
+export interface IState {}
 
 const Home: React.FC<IProps> = (): JSX.Element => {
-  // const [people, setPeople] = useState<IState['people']>(new Array());
-
-  const defaultPeople: IState['people'] = [];
-  const [people, setPeople] = useLocalStorage('people', defaultPeople);
-
-  return (
-    <div>
-      <h1>people in my list</h1>
-      <ShowPeople people={people} />
-      <hr />
-      <CreatePeople people={people} setPeople={setPeople} />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;
