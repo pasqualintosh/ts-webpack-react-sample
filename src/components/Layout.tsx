@@ -13,6 +13,7 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
           justifyContent: 'space-around',
           alignItems: 'center',
           listStyleType: 'none',
+          padding: 0,
         }}>
         <li>
           <Link to={'/'}>generate</Link>

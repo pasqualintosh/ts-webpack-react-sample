@@ -47,31 +47,21 @@ const Scores: React.FC<IProps> = (): JSX.Element => {
   const editScoreModal = (): JSX.Element => {
     if (editableScore)
       return (
-        <div
-          style={{
-            background: '#999',
-            width: '50vw',
-            minHeight: '50vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 9999,
-            position: 'absolute',
-            top: '25vh',
-            left: '25vw',
-          }}>
+        <div className={'editScoreModal'} style={{}}>
           <span
             onClick={() => {
               setEditableScore(undefined);
               setShowEditModal(false);
-            }}
-            style={{
-              color: '#fff',
             }}>
             x
           </span>
-          <span>
+          <span
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'self-end',
+            }}>
             <span>
               <p>{editableScore.wod}</p>
             </span>

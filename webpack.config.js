@@ -28,6 +28,20 @@ module.exports = {
       //   },
       // },
       {
+        test: /\.(css|css)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'style-loader',
+        },
+      },
+      {
+        test: /\.(css|css)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'css-loader',
+        },
+      },
+      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {

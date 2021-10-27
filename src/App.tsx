@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import { WodProvider } from './providers/WodProvider';
 import Home from './screens/Home/Home';
 import Scores from './screens/Home/Scores';
+import './App.css';
 
 const App: React.FC = (): JSX.Element => {
   return (
