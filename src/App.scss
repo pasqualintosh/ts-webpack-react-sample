@@ -1,6 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+$font-stack: 'Titillium Web';
+$header-color: #febb2c;
+
 body {
-  font-family: "Titillium Web";
+  font-family: $font-stack;
   padding: 0 auto;
   margin: 0 auto;
 }
@@ -11,7 +15,7 @@ body #root {
 }
 
 #header {
-  background-color: #febb2c;
+  background-color: $header-color;
 }
 
 #header p {
@@ -29,7 +33,6 @@ body #root {
   padding: 7px;
   background: #001a3310;
 }
-
 #header > ul p {
   font-size: 0.6em;
 }
@@ -37,9 +40,8 @@ body #root {
 #header #header-container {
   display: flex;
   flex-direction: row;
-  background-color: #febb2c;
+  background-color: $header-color;
 }
-
 #header #header-container-logo {
   display: flex;
   flex-direction: row;
@@ -64,5 +66,3 @@ body #root {
 #header #header-container-logo #header-container-service {
   font-size: 0.9em;
 }
-
-/*# sourceMappingURL=App.css.map */

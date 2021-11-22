@@ -7,27 +7,28 @@ interface IState {}
 const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
   return (
     <>
-      <ul
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          listStyleType: 'none',
-          padding: 0,
-        }}>
-        <li>
-          <Link to={'/'}>generate</Link>
-        </li>
-        <li>
-          <Link to={'/scores/'}>your scores</Link>
-        </li>
-        <li>
-          <Link to={'/profile/'}>profile</Link>
-        </li>
-      </ul>
+      <header id={'header'}>
+        <ul>
+          <li>
+            <p>Comune di Palermo</p>
+          </li>
+          <li>
+            <span>ITA</p>
+            {/* <Link to={'/'}>lingua</Link> */}
+          </li>
+        </ul>
+        <span id={'header-container'}>
+          <span id={'header-container-logo'}>
+            <span id={'logo'}>logo</span>
+            <span id={'header-container-service'}>
+              <p>comune di palermo</p>
+              <p>servizio anagrafe</p>
+            </span>
+          </span>
+        </span>
+      </header>
       <span
         style={{
-          marginTop: '40px',
           display: 'flex',
           flex: 1,
           justifyContent: 'center',
