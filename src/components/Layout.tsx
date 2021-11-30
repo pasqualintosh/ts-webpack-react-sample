@@ -13,7 +13,7 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
             <p>Comune di Palermo</p>
           </li>
           <li>
-            <span>ITA</p>
+            <p>ITA</p>
             {/* <Link to={'/'}>lingua</Link> */}
           </li>
         </ul>
