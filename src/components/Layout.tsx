@@ -21,8 +21,8 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
           <span id={'header-container-logo'}>
             <span id={'logo'}>logo</span>
             <span id={'header-container-service'}>
-              <p>comune di palermo</p>
-              <p>servizio anagrafe</p>
+              <p>Comune di Palermo</p>
+              <p>Servizio Anagrafe</p>
             </span>
           </span>
         </span>

@@ -1,12 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;700');
 
 $font-stack: 'Titillium Web';
 $header-color: #febb2c;
+$primary: #0173e6;
+$white: #ffffff;
+$logo-comune-bckgnd: #d20529;
 
 body {
   font-family: $font-stack;
   padding: 0 auto;
   margin: 0 auto;
+}
+
+body a,
+body a:visited {
+  text-decoration: none;
+  text-decoration-style: unset;
+  color: $white;
 }
 
 body #root {
@@ -41,16 +51,22 @@ body #root {
   display: flex;
   flex-direction: row;
   background-color: $header-color;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
 }
 #header #header-container-logo {
   display: flex;
   flex-direction: row;
+  margin-left: 7px;
+  justify-content: center;
+  align-items: center;
 }
 
 #header #header-container-logo #logo {
   width: 60px;
   height: 60px;
-  background-color: red;
+  background-color: $logo-comune-bckgnd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,8 +77,72 @@ body #root {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-left: 7px;
 }
 
 #header #header-container-logo #header-container-service {
   font-size: 0.9em;
+}
+
+#welcome p {
+  display: inline;
+  margin: 0 auto;
+  font-weight: 200;
+}
+
+#welcome h3 {
+  max-width: 370px;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome .lets-start-btn {
+  background-color: $primary;
+  padding: 10px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  min-width: 242px;
+  margin-top: 7px;
+}
+
+#welcome .welcome-image {
+  background-image: url('https://i.picsum.photos/id/229/500/300.jpg?hmac=ewlxOtfjmxu2Ow9eW-P6DZgEtD-hUgK7a4bfNkdxTng');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  margin-top: 7px;
+}
+
+#form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-wrapper .submit-btn {
+  background-color: $primary;
+  padding: 10px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  min-width: 242px;
+  margin-top: 7px;
+  border: none;
 }
