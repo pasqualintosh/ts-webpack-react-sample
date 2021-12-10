@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { modifyPdf } from './ManagePdf';
 
 interface IProps {}
 interface IState {}
@@ -33,8 +34,13 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
         }}>
         {children}
+
+        <div id={'download'}>
+          <span onClick={() => modifyPdf()}>Scarica</span>
+        </div>
       </span>
     </>
   );

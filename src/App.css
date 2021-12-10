@@ -142,4 +142,9 @@ body #root {
   border: none;
 }
 
+#form-wrapper .select {
+  min-width: 242px;
+  margin-top: 7px;
+}
+
 /*# sourceMappingURL=App.css.map */
