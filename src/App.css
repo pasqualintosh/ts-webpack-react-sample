@@ -121,11 +121,34 @@ body #root {
   margin-top: 7px;
 }
 
+#form-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 #form-wrapper form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 40vh;
+}
+
+#form-wrapper form .select,
+#form-wrapper form .text-field {
+  margin-top: 22px;
+  margin-bottom: 22px;
+  width: 40vh;
+}
+
+#form-wrapper form .strong {
+  text-align: center;
+  width: 50vw;
+  font-weight: bolder;
+  letter-spacing: 0.4px;
+  font-size: 1.35em;
 }
 
 #form-wrapper .submit-btn {
@@ -145,6 +168,25 @@ body #root {
 #form-wrapper .select {
   min-width: 242px;
   margin-top: 7px;
+}
+
+#form-wrapper .main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 50vw;
+}
+
+#form-wrapper .main span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-wrapper .main .input-dob {
+  align-self: flex-start;
 }
 
 /*# sourceMappingURL=App.css.map */

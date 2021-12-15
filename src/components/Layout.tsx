@@ -38,9 +38,11 @@ const Layout: React.FC<IProps> = ({ children }): JSX.Element => {
         }}>
         {children}
 
+        {/* 
         <div id={'download'}>
           <span onClick={() => modifyPdf()}>Scarica</span>
-        </div>
+        </div> 
+        */}
       </span>
     </>
   );

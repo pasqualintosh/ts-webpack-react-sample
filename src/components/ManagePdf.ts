@@ -5,7 +5,7 @@ import { positions } from '../helpers/position';
 import { degrees, PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 export async function modifyPdf(data?: any): Promise<void> {
-  const url = 'http://localhost:9500/modulo.pdf';
+  const url = '/modulo.pdf';
   const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);

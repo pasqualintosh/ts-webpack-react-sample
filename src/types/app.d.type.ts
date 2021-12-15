@@ -1,4 +1,4 @@
-export enum CitizenEnum {
+export enum Citizen {
   eu_female = 'I’m a EU Citizen female',
   italian = 'I’m an Italian Citizen',
   non_eu = 'I’m a non-EU citizen',
@@ -34,12 +34,42 @@ export enum MovingFrom {
   first_request = 'First Request',
 }
 
+export enum AireLocation {
+  country = 'Write your Country',
+  city = 'Write your City',
+}
+
+export enum ForeignLocation {
+  country = 'Write your Country',
+}
+
+export enum DifferentLocation {
+  city = 'Write your City',
+}
+
 export type Country = string;
 export type City = string;
+export type Name = string;
+export type Surname = string;
+export type Pob = string;
+export type Dob = Date;
+export type Married = 'yes' | 'no';
+export type IdCode = string;
+export type Citizenship = string;
 
 export interface IFormInput {
-  citizen: CitizenEnum;
+  citizen: Citizen;
   non_eu_status: NonEuStatus;
   eu_status: EuStatus;
   eu_fem_status: EuFemStatus;
+  moving_from: MovingFrom;
+  country: Country;
+  city: City;
+  name: Name;
+  surname: Surname;
+  pob: Pob;
+  dob: Dob;
+  married: Married;
+  id_code: IdCode;
+  citizenship: Citizenship;
 }

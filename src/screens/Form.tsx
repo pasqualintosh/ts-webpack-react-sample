@@ -1,14 +1,12 @@
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Select from 'react-select';
+import GeneralInput from '../components/GeneralInput';
+import LocationInput from '../components/LocationInput';
+import StatusInput from '../components/StatusInput';
 import { useUserDataProviderContext } from '../providers/UserDataProvider';
-import { CitizenEnum, IFormInput } from '../types/app.d.type';
-import {
-  CitizenOption,
-  EuFemStatusOption,
-  EuStatusOption,
-  NonEuStatusOption,
-} from '../types/options';
+import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
+import { CitizenOption, MovingFromOption } from '../types/options';
 
 const Form: React.FC = (): JSX.Element => {
   const { setCurrentData, getCurrentData } = useUserDataProviderContext();
@@ -19,19 +17,58 @@ const Form: React.FC = (): JSX.Element => {
     const currentData = getCurrentData();
 
     Object.keys(data).map(k => {
-      setCurrentData({ ...currentData, [k]: data[k].value });
+      if (data[k]) {
+        if (data[k].value)
+          setCurrentData({ ...currentData, [k]: data[k].value });
+        else setCurrentData({ ...currentData, [k]: data[k] });
+      }
     });
 
-    if (data.citizen?.value.includes(CitizenEnum.eu_female))
-      setWichJsx('citizen_female');
-    if (data.citizen?.value.includes(CitizenEnum.italian))
-      setWichJsx('citizen_italian');
-    if (data.citizen?.value.includes(CitizenEnum.non_eu)) setWichJsx('non_eu');
+    // console.log(data);
+    console.log(Object.keys(data));
+    // console.log(Object.values(data));
+
+    if (data.citizen) {
+      if (data.citizen?.value.includes(Citizen.eu_female))
+        setWichJsx('citizen_female');
+      if (data.citizen?.value.includes(Citizen.italian))
+        setWichJsx('citizen_italian');
+      if (data.citizen?.value.includes(Citizen.non_eu)) setWichJsx('non_eu');
+    }
+
+    if (
+      Object.keys(data).includes('non_eu_status') ||
+      Object.keys(data).includes('eu_status') ||
+      Object.keys(data).includes('eu_fem_status')
+    )
+      setWichJsx('moving_from');
+
+    if (data.moving_from) {
+      if (data.moving_from?.value.includes(MovingFrom.foreign))
+        setWichJsx('aire_location');
+      if (data.moving_from?.value.includes(MovingFrom.it_aire))
+        setWichJsx('foreign_location');
+      if (data.moving_from?.value.includes(MovingFrom.different_city))
+        setWichJsx('different_location');
+
+      if (data.moving_from?.value.includes(MovingFrom.same_city))
+        setWichJsx('general_input');
+      if (data.moving_from?.value.includes(MovingFrom.first_request))
+        setWichJsx('general_input');
+    }
+
+    if (
+      Object.keys(data).includes('country') ||
+      Object.keys(data).includes('city')
+    )
+      setWichJsx('general_input');
   };
 
   const citizenType = (): JSX.Element => (
     <>
-      <label id={'citizen'}>Select your Citizenship</label>
+      <label className={'strong'} id={'citizen'}>
+        What citizenship do you have?
+      </label>
       <Controller
         name="citizen"
         control={control}
@@ -42,40 +79,16 @@ const Form: React.FC = (): JSX.Element => {
     </>
   );
 
-  const nonEuStatus = (): JSX.Element => (
+  const movingFrom = (): JSX.Element => (
     <>
-      <label id={'non_eu_status'}>What’s your status?</label>
+      <label className={'strong'} id={'moving_from'}>
+        Where Are you moving from?
+      </label>
       <Controller
-        name="non_eu_status"
+        name="moving_from"
         control={control}
         render={({ field }) => (
-          <Select className="select" {...field} options={NonEuStatusOption} />
-        )}
-      />
-    </>
-  );
-
-  const euStatus = (): JSX.Element => (
-    <>
-      <label id={'eu_status'}>What’s your status?</label>
-      <Controller
-        name="eu_status"
-        control={control}
-        render={({ field }) => (
-          <Select className="select" {...field} options={EuStatusOption} />
-        )}
-      />
-    </>
-  );
-
-  const euFemStatus = (): JSX.Element => (
-    <>
-      <label id={'eu_fem_status'}>What’s your status?</label>
-      <Controller
-        name="eu_fem_status"
-        control={control}
-        render={({ field }) => (
-          <Select className="select" {...field} options={EuFemStatusOption} />
+          <Select className="select" {...field} options={MovingFromOption} />
         )}
       />
     </>
@@ -85,9 +98,10 @@ const Form: React.FC = (): JSX.Element => {
     <div id={'form-wrapper'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {whichJsx == '' && citizenType()}
-        {whichJsx == 'non_eu' && nonEuStatus()}
-        {whichJsx == 'citizen_italian' && euStatus()}
-        {whichJsx == 'citizen_female' && euFemStatus()}
+        <StatusInput whichJsx={whichJsx} control={control} />
+        {whichJsx == 'moving_from' && movingFrom()}
+        <LocationInput whichJsx={whichJsx} control={control} />
+        <GeneralInput whichJsx={whichJsx} control={control} />
         <input className={'submit-btn'} type={'submit'} value={'Continue'} />
       </form>
     </div>

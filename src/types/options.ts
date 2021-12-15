@@ -1,15 +1,20 @@
 import {
-  CitizenEnum,
+  Citizen,
   EuFemStatus,
   EuStatus,
   MovingFrom,
   NonEuStatus,
+  Country,
+  City,
+  AireLocation,
+  ForeignLocation,
+  DifferentLocation,
 } from './app.d.type';
 
 export const CitizenOption = [
-  { value: CitizenEnum.eu_female, label: CitizenEnum.eu_female },
-  { value: CitizenEnum.italian, label: CitizenEnum.italian },
-  { value: CitizenEnum.non_eu, label: CitizenEnum.non_eu },
+  { value: Citizen.eu_female, label: Citizen.eu_female },
+  { value: Citizen.italian, label: Citizen.italian },
+  { value: Citizen.non_eu, label: Citizen.non_eu },
 ];
 export const NonEuStatusOption = [
   { value: NonEuStatus.ecr, label: NonEuStatus.ecr },
@@ -36,4 +41,17 @@ export const MovingFromOption = [
   { value: MovingFrom.same_city, label: MovingFrom.same_city },
   { value: MovingFrom.different_city, label: MovingFrom.different_city },
   { value: MovingFrom.first_request, label: MovingFrom.first_request },
+];
+
+export const AireLocationOption = [
+  { value: '', label: AireLocation.country },
+  { value: '', label: AireLocation.city },
+];
+
+export const ForeignLocationOption = [
+  { value: '', label: AireLocation.country },
+];
+
+export const DifferentLocationOption = [
+  { value: '', label: AireLocation.city },
 ];
