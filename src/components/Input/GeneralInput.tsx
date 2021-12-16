@@ -1,8 +1,8 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { IFormInput } from '../types/app.d.type';
-import {} from '../types/options';
+import { IFormInput } from '../../types/app.d.type';
+import {} from '../../types/options';
 import DateAdapter from '@date-io/moment';
 import { DatePicker, LocalizationProvider } from '@mui/lab';
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Select from 'react-select';
-import GeneralInput from '../components/GeneralInput';
-import LocationInput from '../components/LocationInput';
-import StatusInput from '../components/StatusInput';
+import GeneralInput from '../components/Input/GeneralInput';
+import JobInput from '../components/Input/JobInput';
+import LocationInput from '../components/Input/LocationInput';
+import StatusInput from '../components/Input/StatusInput';
 import { useUserDataProviderContext } from '../providers/UserDataProvider';
 import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
 import { CitizenOption, MovingFromOption } from '../types/options';
@@ -25,7 +26,7 @@ const Form: React.FC = (): JSX.Element => {
     const _data: Record<string, any> = { ...data }; // lo trasformo per operare in maniera più agnostica
 
     Object.keys(_data as Record<string, any>).map(k => {
-      if (_data[k]!.value)
+      if (_data[k] && _data[k]!.value)
         setCurrentData({ ...currentData, [k]: _data[k].value });
       else setCurrentData({ ...currentData, [k]: _data[k] });
     });
@@ -65,6 +66,17 @@ const Form: React.FC = (): JSX.Element => {
       Object.keys(_data).includes('city')
     )
       setWichJsx('general_input');
+
+    if (
+      Object.keys(_data).includes('name') &&
+      Object.keys(_data).includes('surname') &&
+      Object.keys(_data).includes('dob') &&
+      Object.keys(_data).includes('pob') &&
+      Object.keys(_data).includes('id_code') &&
+      Object.keys(_data).includes('married') &&
+      Object.keys(_data).includes('citizenship')
+    )
+      setWichJsx('job');
   };
 
   const citizenType = (): JSX.Element => (
@@ -105,6 +117,7 @@ const Form: React.FC = (): JSX.Element => {
         {whichJsx == 'moving_from' && movingFrom()}
         <LocationInput whichJsx={whichJsx} control={control} />
         <GeneralInput whichJsx={whichJsx} control={control} />
+        <JobInput whichJsx={whichJsx} setWichJsx={setWichJsx} />
         <input className={'submit-btn'} type={'submit'} value={'Continue'} />
       </form>
     </div>

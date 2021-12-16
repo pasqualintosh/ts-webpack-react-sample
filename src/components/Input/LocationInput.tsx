@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { IFormInput } from '../types/app.d.type';
+import { IFormInput } from '../../types/app.d.type';
 
 interface IProps {
   whichJsx: string;

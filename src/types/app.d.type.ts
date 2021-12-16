@@ -56,6 +56,7 @@ export type Dob = Date;
 export type Married = 'yes' | 'no' | '';
 export type IdCode = string;
 export type Citizenship = string;
+export type Job = 'yes' | 'no';
 
 export interface IFormInput {
   citizen: { label: Citizen; value: Citizen };

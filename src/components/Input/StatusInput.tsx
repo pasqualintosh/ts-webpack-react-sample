@@ -1,12 +1,12 @@
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import Select from 'react-select';
-import { IFormInput } from '../types/app.d.type';
+import { IFormInput } from '../../types/app.d.type';
 import {
   EuFemStatusOption,
   EuStatusOption,
   NonEuStatusOption,
-} from '../types/options';
+} from '../../types/options';
 
 interface IProps {
   whichJsx: string;

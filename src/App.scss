@@ -192,3 +192,24 @@ body #root {
 #form-wrapper .main .input-dob {
   align-self: flex-start;
 }
+
+#form-wrapper .yes-no-btn {
+  justify-content: space-around;
+  padding: 4px;
+}
+
+#form-wrapper .yes-no-btn span {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+#form-wrapper .yes-no-btn-white {
+  background-color: $white;
+  color: $primary;
+}
