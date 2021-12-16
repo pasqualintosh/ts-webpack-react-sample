@@ -1,7 +1,7 @@
 export enum Citizen {
-  eu_female = 'I’m a EU Citizen female',
-  italian = 'I’m an Italian Citizen',
-  non_eu = 'I’m a non-EU citizen',
+  'eu_female' = 'I’m a EU Citizen female',
+  'italian' = 'I’m an Italian Citizen',
+  'non_eu' = 'I’m a non-EU citizen',
 }
 
 export enum NonEuStatus {
@@ -53,16 +53,16 @@ export type Name = string;
 export type Surname = string;
 export type Pob = string;
 export type Dob = Date;
-export type Married = 'yes' | 'no';
+export type Married = 'yes' | 'no' | '';
 export type IdCode = string;
 export type Citizenship = string;
 
 export interface IFormInput {
-  citizen: Citizen;
-  non_eu_status: NonEuStatus;
-  eu_status: EuStatus;
-  eu_fem_status: EuFemStatus;
-  moving_from: MovingFrom;
+  citizen: { label: Citizen; value: Citizen };
+  non_eu_status: { label: NonEuStatus; value: NonEuStatus };
+  eu_status: { label: EuStatus; value: EuStatus };
+  eu_fem_status: { label: EuFemStatus; value: EuFemStatus };
+  moving_from: { label: MovingFrom; value: MovingFrom };
   country: Country;
   city: City;
   name: Name;

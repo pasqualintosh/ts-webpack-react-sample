@@ -1,7 +1,7 @@
 const xScarto = 418;
 const yScarto = 18;
 
-export const positions = (width, height) => ({
+export const positions = (width: number, height: number) => ({
   anotherCity: {
     x: 455 - xScarto,
     y: height - 149 + yScarto,

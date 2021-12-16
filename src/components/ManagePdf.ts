@@ -3,6 +3,7 @@ const yScarto = 15;
 import { positions } from '../helpers/position';
 
 import { degrees, PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { IframeHTMLAttributes } from 'react';
 
 export async function modifyPdf(data?: any): Promise<void> {
   const url = '/modulo.pdf';
@@ -37,8 +38,9 @@ export async function modifyPdf(data?: any): Promise<void> {
   const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
 
   if (document) {
-    document?.body.innerHTML = `<iframe id='pdf' style="width: 100vw; height: 100vh;"></iframe>`;
-    document.getElementById('pdf').src = pdfDataUri;
+    document!.body.innerHTML = `<iframe id='pdf' style="width: 100vw; height: 100vh;"></iframe>`;
+    const iframe = document!.getElementById('pdf') as HTMLIFrameElement;
+    iframe!.src = pdfDataUri;
   }
 
   //   const pdfUrl = window.URL.createObjectURL(new Blob([pdfBytes.buffer]));

@@ -1,7 +1,6 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
-import Select from 'react-select';
 import { IFormInput } from '../types/app.d.type';
 import {} from '../types/options';
 import DateAdapter from '@date-io/moment';
@@ -23,6 +22,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'name'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}
@@ -59,6 +59,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'married'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}
@@ -74,6 +75,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'id_code'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}
@@ -90,6 +92,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'surname'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}
@@ -104,6 +107,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'pob'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}
@@ -118,6 +122,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           <Controller
             name={'citizenship'}
             control={control}
+            defaultValue={''}
             render={({ field }) => (
               <TextField
                 className={'text-field'}

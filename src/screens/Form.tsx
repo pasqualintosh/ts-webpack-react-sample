@@ -8,58 +8,61 @@ import { useUserDataProviderContext } from '../providers/UserDataProvider';
 import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
 import { CitizenOption, MovingFromOption } from '../types/options';
 
+interface T {
+  key: string;
+  value: string;
+}
+
 const Form: React.FC = (): JSX.Element => {
   const { setCurrentData, getCurrentData } = useUserDataProviderContext();
-  const { register, handleSubmit, control } = useForm<IFormInput>();
+  const { register, handleSubmit, control } = useForm<IFormInput>({
+    defaultValues: {},
+  });
   const [whichJsx, setWichJsx] = React.useState('');
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const currentData = getCurrentData();
+    const _data: Record<string, any> = { ...data }; // lo trasformo per operare in maniera più agnostica
 
-    Object.keys(data).map(k => {
-      if (data[k]) {
-        if (data[k].value)
-          setCurrentData({ ...currentData, [k]: data[k].value });
-        else setCurrentData({ ...currentData, [k]: data[k] });
-      }
+    Object.keys(_data as Record<string, any>).map(k => {
+      if (_data[k]!.value)
+        setCurrentData({ ...currentData, [k]: _data[k].value });
+      else setCurrentData({ ...currentData, [k]: _data[k] });
     });
 
-    // console.log(data);
-    console.log(Object.keys(data));
-    // console.log(Object.values(data));
+    console.log(Object.keys(_data));
 
-    if (data.citizen) {
-      if (data.citizen?.value.includes(Citizen.eu_female))
+    if (_data.citizen!) {
+      if (_data.citizen!.value!.includes(Citizen.eu_female))
         setWichJsx('citizen_female');
-      if (data.citizen?.value.includes(Citizen.italian))
+      if (_data.citizen!.value!.includes(Citizen.italian))
         setWichJsx('citizen_italian');
-      if (data.citizen?.value.includes(Citizen.non_eu)) setWichJsx('non_eu');
+      if (_data.citizen!.value!.includes(Citizen.non_eu)) setWichJsx('non_eu');
     }
-
     if (
-      Object.keys(data).includes('non_eu_status') ||
-      Object.keys(data).includes('eu_status') ||
-      Object.keys(data).includes('eu_fem_status')
+      Object.keys(_data).includes('non_eu_status') ||
+      Object.keys(_data).includes('eu_status') ||
+      Object.keys(_data).includes('eu_fem_status')
     )
       setWichJsx('moving_from');
 
-    if (data.moving_from) {
-      if (data.moving_from?.value.includes(MovingFrom.foreign))
+    if (_data.moving_from!) {
+      if (_data.moving_from!.value!.includes(MovingFrom.foreign))
         setWichJsx('aire_location');
-      if (data.moving_from?.value.includes(MovingFrom.it_aire))
+      if (_data.moving_from!.value!.includes(MovingFrom.it_aire))
         setWichJsx('foreign_location');
-      if (data.moving_from?.value.includes(MovingFrom.different_city))
+      if (_data.moving_from!.value!.includes(MovingFrom.different_city))
         setWichJsx('different_location');
 
-      if (data.moving_from?.value.includes(MovingFrom.same_city))
+      if (_data.moving_from!.value!.includes(MovingFrom.same_city))
         setWichJsx('general_input');
-      if (data.moving_from?.value.includes(MovingFrom.first_request))
+      if (_data.moving_from!.value!.includes(MovingFrom.first_request))
         setWichJsx('general_input');
     }
 
     if (
-      Object.keys(data).includes('country') ||
-      Object.keys(data).includes('city')
+      Object.keys(_data).includes('country') ||
+      Object.keys(_data).includes('city')
     )
       setWichJsx('general_input');
   };
