@@ -58,6 +58,31 @@ export type IdCode = string;
 export type Citizenship = string;
 export type Job = 'yes' | 'no';
 
+export enum NonProfessionalStatus {
+  housewife = 'Housewife',
+  student = 'Student',
+  unemployed = 'Unemployed',
+  retired = 'Retired',
+  other = 'Other',
+}
+
+export enum ProfessionalStatus {
+  worker = 'Worker',
+  family_worker = 'Family Worker',
+  freelance = 'Freelance / Entrepreneur',
+  self = 'Self-Employed',
+  executive = 'Executive / Employee',
+}
+
+export enum Education {
+  primary = 'Primary School',
+  secondary = 'Secondary School Certificate',
+  diploma = 'Diploma',
+  bachelor = 'Bachelor',
+  master = 'Master Degree',
+  phd = 'Phd',
+}
+
 export interface IFormInput {
   citizen: { label: Citizen; value: Citizen };
   non_eu_status: { label: NonEuStatus; value: NonEuStatus };
@@ -73,4 +98,10 @@ export interface IFormInput {
   married: Married;
   id_code: IdCode;
   citizenship: Citizenship;
+  non_professional_status: {
+    label: NonProfessionalStatus;
+    value: NonProfessionalStatus;
+  };
+  professional_status: { label: ProfessionalStatus; value: ProfessionalStatus };
+  eduaction: { label: Education; value: Education };
 }

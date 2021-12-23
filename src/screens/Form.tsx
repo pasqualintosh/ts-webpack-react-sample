@@ -4,6 +4,7 @@ import Select from 'react-select';
 import GeneralInput from '../components/Input/GeneralInput';
 import JobInput from '../components/Input/JobInput';
 import LocationInput from '../components/Input/LocationInput';
+import ProfessionInput from '../components/Input/ProfessionInput';
 import StatusInput from '../components/Input/StatusInput';
 import { useUserDataProviderContext } from '../providers/UserDataProvider';
 import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
@@ -77,6 +78,14 @@ const Form: React.FC = (): JSX.Element => {
       Object.keys(_data).includes('citizenship')
     )
       setWichJsx('job');
+
+    if (
+      Object.keys(_data).includes('name') &&
+      Object.keys(currentData).includes('job')
+    )
+      setWichJsx(
+        currentData.job == 'yes' ? 'professional' : 'non_professional',
+      );
   };
 
   const citizenType = (): JSX.Element => (
@@ -118,7 +127,10 @@ const Form: React.FC = (): JSX.Element => {
         <LocationInput whichJsx={whichJsx} control={control} />
         <GeneralInput whichJsx={whichJsx} control={control} />
         <JobInput whichJsx={whichJsx} setWichJsx={setWichJsx} />
-        <input className={'submit-btn'} type={'submit'} value={'Continue'} />
+        <ProfessionInput whichJsx={whichJsx} control={control} />
+        {whichJsx != 'job' && (
+          <input className={'submit-btn'} type={'submit'} value={'Continue'} />
+        )}
       </form>
     </div>
   );

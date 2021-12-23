@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 import { useUserDataProviderContext } from '../../providers/UserDataProvider';
 import { IFormInput, Job } from '../../types/app.d.type';
 
@@ -9,7 +10,6 @@ interface IProps {
 
 const JobInput: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
   const { setCurrentData, getCurrentData } = useUserDataProviderContext();
-
   const [job, setJob] = React.useState<Job>('yes');
 
   const setAndContinue = (
@@ -19,7 +19,7 @@ const JobInput: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
     const currentData = getCurrentData();
     setJob(param);
     setCurrentData({ ...currentData, job: param });
-    setWichJsx('profession');
+    setWichJsx(param == 'yes' ? 'professional' : 'non_professional');
   };
 
   if (whichJsx != 'job') return <></>;

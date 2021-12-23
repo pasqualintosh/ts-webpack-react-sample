@@ -18,6 +18,7 @@ const LocationInput: React.FC<IProps> = ({
       <Controller
         name={'country'}
         control={control}
+        defaultValue={''}
         render={({ field }) => (
           <TextField
             className={'text-field'}
@@ -32,6 +33,7 @@ const LocationInput: React.FC<IProps> = ({
       <Controller
         name={'city'}
         control={control}
+        defaultValue={''}
         render={({ field }) => (
           <TextField
             className={'text-field'}
@@ -52,6 +54,7 @@ const LocationInput: React.FC<IProps> = ({
       <Controller
         name={'country'}
         control={control}
+        defaultValue={''}
         render={({ field }) => (
           <TextField
             className={'text-field'}
@@ -72,6 +75,7 @@ const LocationInput: React.FC<IProps> = ({
       <Controller
         name={'city'}
         control={control}
+        defaultValue={''}
         render={({ field }) => (
           <TextField
             className={'text-field'}

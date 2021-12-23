@@ -9,6 +9,9 @@ import {
   AireLocation,
   ForeignLocation,
   DifferentLocation,
+  NonProfessionalStatus,
+  ProfessionalStatus,
+  Education,
 } from './app.d.type';
 
 export const CitizenOption = [
@@ -54,4 +57,77 @@ export const ForeignLocationOption = [
 
 export const DifferentLocationOption = [
   { value: '', label: AireLocation.city },
+];
+
+export const NonProfessionalOption = [
+  {
+    value: NonProfessionalStatus.housewife,
+    label: NonProfessionalStatus.housewife,
+  },
+  {
+    value: NonProfessionalStatus.student,
+    label: NonProfessionalStatus.student,
+  },
+  {
+    value: NonProfessionalStatus.unemployed,
+    label: NonProfessionalStatus.unemployed,
+  },
+  {
+    value: NonProfessionalStatus.retired,
+    label: NonProfessionalStatus.retired,
+  },
+  {
+    value: NonProfessionalStatus.other,
+    label: NonProfessionalStatus.other,
+  },
+];
+
+export const ProfessionalOption = [
+  {
+    value: ProfessionalStatus.worker,
+    label: ProfessionalStatus.worker,
+  },
+  {
+    value: ProfessionalStatus.family_worker,
+    label: ProfessionalStatus.family_worker,
+  },
+  {
+    value: ProfessionalStatus.freelance,
+    label: ProfessionalStatus.freelance,
+  },
+  {
+    value: ProfessionalStatus.self,
+    label: ProfessionalStatus.self,
+  },
+  {
+    value: ProfessionalStatus.executive,
+    label: ProfessionalStatus.executive,
+  },
+];
+
+export const EducationOption = [
+  {
+    value: Education.primary,
+    label: Education.primary,
+  },
+  {
+    value: Education.secondary,
+    label: Education.secondary,
+  },
+  {
+    value: Education.diploma,
+    label: Education.diploma,
+  },
+  {
+    value: Education.bachelor,
+    label: Education.bachelor,
+  },
+  {
+    value: Education.master,
+    label: Education.master,
+  },
+  {
+    value: Education.phd,
+    label: Education.phd,
+  },
 ];
