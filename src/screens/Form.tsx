@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Select from 'react-select';
+import EducationInput from '../components/Input/EducationInput';
 import GeneralInput from '../components/Input/GeneralInput';
 import JobInput from '../components/Input/JobInput';
 import LocationInput from '../components/Input/LocationInput';
@@ -86,6 +87,12 @@ const Form: React.FC = (): JSX.Element => {
       setWichJsx(
         currentData.job == 'yes' ? 'professional' : 'non_professional',
       );
+
+    if (
+      Object.keys(_data).includes('non_professional_status') ||
+      Object.keys(_data).includes('professional_status')
+    )
+      setWichJsx('education');
   };
 
   const citizenType = (): JSX.Element => (
@@ -128,6 +135,7 @@ const Form: React.FC = (): JSX.Element => {
         <GeneralInput whichJsx={whichJsx} control={control} />
         <JobInput whichJsx={whichJsx} setWichJsx={setWichJsx} />
         <ProfessionInput whichJsx={whichJsx} control={control} />
+        <EducationInput whichJsx={whichJsx} control={control} />
         {whichJsx != 'job' && (
           <input className={'submit-btn'} type={'submit'} value={'Continue'} />
         )}

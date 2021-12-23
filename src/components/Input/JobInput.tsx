@@ -26,6 +26,7 @@ const JobInput: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
 
   return (
     <>
+      <p className={'strong'}>Do you have a job?</p>
       <span className="submit-btn yes-no-btn">
         <span
           className={job === 'yes' ? 'yes-no-btn-white' : ''}

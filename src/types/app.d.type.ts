@@ -103,5 +103,5 @@ export interface IFormInput {
     value: NonProfessionalStatus;
   };
   professional_status: { label: ProfessionalStatus; value: ProfessionalStatus };
-  eduaction: { label: Education; value: Education };
+  education_status: { label: Education; value: Education };
 }
