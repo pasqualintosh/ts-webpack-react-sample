@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import { IFormInput } from '../../types/app.d.type';
-import {} from '../../types/options';
 import DateAdapter from '@date-io/moment';
 import { DatePicker, LocalizationProvider } from '@mui/lab';
 
@@ -11,16 +10,16 @@ interface IProps {
   control: Control<IFormInput, object>;
 }
 
-const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
-  if (whichJsx != 'general_input') return <></>;
+const DrivingLicenseDetails: React.FC<IProps> = ({ whichJsx, control }) => {
+  if (whichJsx != 'driving_license_details') return <></>;
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <span className={'strong'}>Let’s talk about you</span>
+      <span className={'strong'}>Driving License Details</span>
       <span className={'main'}>
         <span>
           <Controller
-            name={'name'}
+            name={'driving_license_number'}
             control={control}
             defaultValue={''}
             render={({ field }) => (
@@ -28,21 +27,21 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
                 className={'text-field'}
                 id={'standard-basic'}
                 variant={'standard'}
-                label={'What’s Your Name?'}
+                label={'Number'}
                 {...field}
-                helperText={'Ex. Moussa'}
+                helperText={'Ex. 91828930'}
               />
             )}
           />
 
           <Controller
-            name={'dob'}
+            name={'driving_license_release'}
             control={control}
             render={({ field }) => (
               <DatePicker
                 className={'input-dob'}
                 mask="__/__/____"
-                label="Date of birth?"
+                label="Release Date"
                 disableFuture={true}
                 renderInput={params => (
                   <TextField
@@ -57,7 +56,7 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
           />
 
           <Controller
-            name={'married'}
+            name={'driving_license_country'}
             control={control}
             defaultValue={''}
             render={({ field }) => (
@@ -65,32 +64,16 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
                 className={'text-field'}
                 id={'standard-basic'}
                 variant={'standard'}
-                label={'Are you Married?'}
+                label={'County of'}
                 {...field}
-                helperText={'Answer yes or no'}
-              />
-            )}
-          />
-
-          <Controller
-            name={'id_code'}
-            control={control}
-            defaultValue={''}
-            render={({ field }) => (
-              <TextField
-                className={'text-field'}
-                id={'standard-basic'}
-                variant={'standard'}
-                label={'What’s your Codice Fiscale?'}
-                {...field}
-                helperText={'Ex. RSMRI88L73G273E'}
+                helperText={'Ex. Palermo'}
               />
             )}
           />
         </span>
         <span>
           <Controller
-            name={'surname'}
+            name={'driving_license_type'}
             control={control}
             defaultValue={''}
             render={({ field }) => (
@@ -98,14 +81,14 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
                 className={'text-field'}
                 id={'standard-basic'}
                 variant={'standard'}
-                label={'What’s Your Surname?'}
+                label={'License Type'}
                 {...field}
-                helperText={'Ex. Semprini'}
+                helperText={'Ex. A, B, C'}
               />
             )}
           />
           <Controller
-            name={'pob'}
+            name={'driving_license_issuing'}
             control={control}
             defaultValue={''}
             render={({ field }) => (
@@ -113,24 +96,9 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
                 className={'text-field'}
                 id={'standard-basic'}
                 variant={'standard'}
-                label={'Where were you born?'}
+                label={'Issuing body'}
                 {...field}
-                helperText={'Indicate your city of birth'}
-              />
-            )}
-          />
-          <Controller
-            name={'citizenship'}
-            control={control}
-            defaultValue={''}
-            render={({ field }) => (
-              <TextField
-                className={'text-field'}
-                id={'standard-basic'}
-                variant={'standard'}
-                label={'What’s your citizenship?'}
-                {...field}
-                helperText={'Ex. Ghanian, Française, Russian…'}
+                helperText={'Motorizzazione'}
               />
             )}
           />
@@ -140,4 +108,4 @@ const GeneralInput: React.FC<IProps> = ({ whichJsx, control }) => {
   );
 };
 
-export default GeneralInput;
+export default DrivingLicenseDetails;

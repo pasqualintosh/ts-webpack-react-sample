@@ -13,7 +13,7 @@ interface IProps {
   control: Control<IFormInput, object>;
 }
 
-const StatusInput: React.FC<IProps> = ({ whichJsx, control }): JSX.Element => {
+const Status: React.FC<IProps> = ({ whichJsx, control }): JSX.Element => {
   const nonEuStatus = (): JSX.Element => (
     <>
       <label className={'strong'} id={'non_eu_status'}>
@@ -68,4 +68,4 @@ const StatusInput: React.FC<IProps> = ({ whichJsx, control }): JSX.Element => {
   );
 };
 
-export default StatusInput;
+export default Status;

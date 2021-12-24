@@ -9,7 +9,7 @@ interface IProps {
   control: Control<IFormInput, object>;
 }
 
-const ProfessionInput: React.FC<IProps> = ({ whichJsx, control }) => {
+const Profession: React.FC<IProps> = ({ whichJsx, control }) => {
   const nonProfessional = (): JSX.Element => (
     <>
       <label className={'strong'} id={'non_professional_status'}>
@@ -50,4 +50,4 @@ const ProfessionInput: React.FC<IProps> = ({ whichJsx, control }) => {
   return <></>;
 };
 
-export default ProfessionInput;
+export default Profession;

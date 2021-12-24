@@ -1,14 +1,13 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 import { useUserDataProviderContext } from '../../providers/UserDataProvider';
-import { IFormInput, Job } from '../../types/app.d.type';
+import { Job } from '../../types/app.d.type';
 
 interface IProps {
   whichJsx: string;
-  setWichJsx: Dispatch<SetStateAction<string>>;
+  setWichJsx: (param: string) => void;
 }
 
-const JobInput: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
+const Job: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
   const { setCurrentData, getCurrentData } = useUserDataProviderContext();
   const [job, setJob] = React.useState<Job>('yes');
 
@@ -43,4 +42,4 @@ const JobInput: React.FC<IProps> = ({ whichJsx, setWichJsx }): JSX.Element => {
   );
 };
 
-export default JobInput;
+export default Job;

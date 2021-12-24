@@ -104,4 +104,9 @@ export interface IFormInput {
   };
   professional_status: { label: ProfessionalStatus; value: ProfessionalStatus };
   education_status: { label: Education; value: Education };
+  driving_license_number: string | undefined;
+  driving_license_release: string | undefined;
+  driving_license_country: string | undefined;
+  driving_license_type: string | undefined;
+  driving_license_issuing: string | undefined;
 }

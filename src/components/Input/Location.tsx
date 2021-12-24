@@ -8,10 +8,7 @@ interface IProps {
   control: Control<IFormInput, object>;
 }
 
-const LocationInput: React.FC<IProps> = ({
-  whichJsx,
-  control,
-}): JSX.Element => {
+const Location: React.FC<IProps> = ({ whichJsx, control }): JSX.Element => {
   const aireLocation = (): JSX.Element => (
     <>
       <span className={'strong'}>What Country and what city?</span>
@@ -99,4 +96,4 @@ const LocationInput: React.FC<IProps> = ({
   );
 };
 
-export default LocationInput;
+export default Location;

@@ -9,7 +9,7 @@ interface IProps {
   control: Control<IFormInput, object>;
 }
 
-const EducationInput: React.FC<IProps> = ({ whichJsx, control }) => {
+const Education: React.FC<IProps> = ({ whichJsx, control }) => {
   const education = (): JSX.Element => (
     <>
       <label className={'strong'} id={'education_status'}>
@@ -30,4 +30,4 @@ const EducationInput: React.FC<IProps> = ({ whichJsx, control }) => {
   return education();
 };
 
-export default EducationInput;
+export default Education;

@@ -1,12 +1,15 @@
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Select from 'react-select';
-import EducationInput from '../components/Input/EducationInput';
-import GeneralInput from '../components/Input/GeneralInput';
-import JobInput from '../components/Input/JobInput';
-import LocationInput from '../components/Input/LocationInput';
-import ProfessionInput from '../components/Input/ProfessionInput';
-import StatusInput from '../components/Input/StatusInput';
+import DrivingLicense from '../components/Input/DrivingLicense';
+import DrivingLicenseDetails from '../components/Input/DrivingLicenseDetails';
+import Education from '../components/Input/Education';
+import General from '../components/Input/General';
+import Job from '../components/Input/Job';
+import Location from '../components/Input/Location';
+import Profession from '../components/Input/Profession';
+import RegisteredVehicle from '../components/Input/RegisteredVehicle';
+import Status from '../components/Input/Status';
 import { useUserDataProviderContext } from '../providers/UserDataProvider';
 import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
 import { CitizenOption, MovingFromOption } from '../types/options';
@@ -23,6 +26,10 @@ const Form: React.FC = (): JSX.Element => {
   });
   const [whichJsx, setWichJsx] = React.useState('');
 
+  React.useEffect(() => {
+    console.log('Rendering <Form />');
+  }, [whichJsx]);
+
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const currentData = getCurrentData();
     const _data: Record<string, any> = { ...data }; // lo trasformo per operare in maniera più agnostica
@@ -34,6 +41,7 @@ const Form: React.FC = (): JSX.Element => {
     });
 
     console.log(Object.keys(_data));
+    // console.log(Object.keys(currentData));
 
     if (_data.citizen!) {
       if (_data.citizen!.value!.includes(Citizen.eu_female))
@@ -93,6 +101,26 @@ const Form: React.FC = (): JSX.Element => {
       Object.keys(_data).includes('professional_status')
     )
       setWichJsx('education');
+
+    if (Object.keys(_data).includes('education_status'))
+      setWichJsx('driving_license');
+
+    if (
+      Object.keys(_data).includes('education_status') &&
+      Object.keys(currentData).includes('driving_license')
+    ) {
+      if (currentData.driving_license) setWichJsx('driving_license_details');
+      else setWichJsx('residence');
+    }
+
+    if (
+      Object.keys(_data).includes('driving_license_number') &&
+      Object.keys(_data).includes('driving_license_release') &&
+      Object.keys(_data).includes('driving_license_country') &&
+      Object.keys(_data).includes('driving_license_type') &&
+      Object.keys(_data).includes('driving_license_issuing')
+    )
+      setWichJsx('registered_vehicle');
   };
 
   const citizenType = (): JSX.Element => (
@@ -129,14 +157,17 @@ const Form: React.FC = (): JSX.Element => {
     <div id={'form-wrapper'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {whichJsx == '' && citizenType()}
-        <StatusInput whichJsx={whichJsx} control={control} />
+        <Status whichJsx={whichJsx} control={control} />
         {whichJsx == 'moving_from' && movingFrom()}
-        <LocationInput whichJsx={whichJsx} control={control} />
-        <GeneralInput whichJsx={whichJsx} control={control} />
-        <JobInput whichJsx={whichJsx} setWichJsx={setWichJsx} />
-        <ProfessionInput whichJsx={whichJsx} control={control} />
-        <EducationInput whichJsx={whichJsx} control={control} />
-        {whichJsx != 'job' && (
+        <Location whichJsx={whichJsx} control={control} />
+        <General whichJsx={whichJsx} control={control} />
+        <Job whichJsx={whichJsx} setWichJsx={setWichJsx} />
+        <Profession whichJsx={whichJsx} control={control} />
+        <Education whichJsx={whichJsx} control={control} />
+        <DrivingLicense whichJsx={whichJsx} setWichJsx={setWichJsx} />
+        <DrivingLicenseDetails whichJsx={whichJsx} control={control} />
+        <RegisteredVehicle whichJsx={whichJsx} setWichJsx={setWichJsx} />
+        {whichJsx != 'job' && whichJsx != 'driving_license' && (
           <input className={'submit-btn'} type={'submit'} value={'Continue'} />
         )}
       </form>
