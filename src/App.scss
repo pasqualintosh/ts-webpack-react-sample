@@ -5,6 +5,7 @@ $header-color: #febb2c;
 $primary: #0173e6;
 $white: #ffffff;
 $logo-comune-bckgnd: #d20529;
+$plus: #0073e6;
 
 body {
   font-family: $font-stack;
@@ -175,12 +176,19 @@ body #root {
   margin-top: 7px;
 }
 
+#form-wrapper .number,
+#form-wrapper #formatted-numberformat-input {
+  max-width: 80px;
+  margin-top: 7px;
+  text-align: center;
+}
+
 #form-wrapper .main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
-  width: 50vw;
+  min-width: 85vw;
 }
 #form-wrapper .main span {
   display: flex;
@@ -212,4 +220,33 @@ body #root {
 #form-wrapper .yes-no-btn-white {
   background-color: $white;
   color: $primary;
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.vehicle-detail .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vehicle-detail .group p {
+  flex: 0.3;
+  text-align: left !important;
+}
+
+.vehicle-detail .group .plus {
+  font-size: 40px;
+  font-weight: 100;
+  color: $plus;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

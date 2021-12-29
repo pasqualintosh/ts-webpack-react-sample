@@ -109,4 +109,16 @@ export interface IFormInput {
   driving_license_country: string | undefined;
   driving_license_type: string | undefined;
   driving_license_issuing: string | undefined;
+  vehicle_details_cars: string | undefined;
+  vehicle_details_trailers: string | undefined;
+  vehicle_details_mopeds: string | undefined;
+  vehicle_details_bike: string | undefined;
+  residence_city: string | undefined;
+  residence_address: string | undefined;
+  residence_floor: string | undefined;
+  residence_unit: string | undefined;
+  residence_province: string | undefined;
+  residence_civic: string | undefined;
+  residence_apartment: string | undefined;
+  people_beside: number | undefined;
 }

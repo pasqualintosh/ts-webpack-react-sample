@@ -7,9 +7,12 @@ import Education from '../components/Input/Education';
 import General from '../components/Input/General';
 import Job from '../components/Input/Job';
 import Location from '../components/Input/Location';
+import PeopleBeside from '../components/Input/PeopleBeside';
 import Profession from '../components/Input/Profession';
 import RegisteredVehicle from '../components/Input/RegisteredVehicle';
+import Residence from '../components/Input/Residence';
 import Status from '../components/Input/Status';
+import VehicleDetail from '../components/Input/VehicleDetail';
 import { useUserDataProviderContext } from '../providers/UserDataProvider';
 import { Citizen, IFormInput, MovingFrom } from '../types/app.d.type';
 import { CitizenOption, MovingFromOption } from '../types/options';
@@ -28,6 +31,8 @@ const Form: React.FC = (): JSX.Element => {
 
   React.useEffect(() => {
     console.log('Rendering <Form />');
+    console.log('current data', getCurrentData());
+    console.log('whichJsx', whichJsx);
   }, [whichJsx]);
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
@@ -40,7 +45,7 @@ const Form: React.FC = (): JSX.Element => {
       else setCurrentData({ ...currentData, [k]: _data[k] });
     });
 
-    console.log(Object.keys(_data));
+    // console.log(Object.keys(_data));
     // console.log(Object.keys(currentData));
 
     if (_data.citizen!) {
@@ -121,6 +126,31 @@ const Form: React.FC = (): JSX.Element => {
       Object.keys(_data).includes('driving_license_issuing')
     )
       setWichJsx('registered_vehicle');
+
+    if (Object.keys(currentData).includes('registered_vehicle'))
+      setWichJsx('vehicle_details');
+
+    if (
+      Object.keys(currentData).includes('vehicle_details_bike') ||
+      Object.keys(currentData).includes('vehicle_details_cars') ||
+      Object.keys(currentData).includes('vehicle_details_trailers') ||
+      Object.keys(currentData).includes('vehicle_details_mopeds')
+    )
+      setWichJsx('residence');
+
+    if (
+      Object.keys(_data).includes('residence_city') &&
+      Object.keys(_data).includes('residence_address') &&
+      Object.keys(_data).includes('residence_floor') &&
+      Object.keys(_data).includes('residence_unit') &&
+      Object.keys(_data).includes('residence_province') &&
+      Object.keys(_data).includes('residence_civic') &&
+      Object.keys(_data).includes('residence_apartment')
+    )
+      setWichJsx('people_beside');
+
+    if (Object.keys(_data).includes('people_beside'))
+      setWichJsx('people_beside');
   };
 
   const citizenType = (): JSX.Element => (
@@ -167,9 +197,18 @@ const Form: React.FC = (): JSX.Element => {
         <DrivingLicense whichJsx={whichJsx} setWichJsx={setWichJsx} />
         <DrivingLicenseDetails whichJsx={whichJsx} control={control} />
         <RegisteredVehicle whichJsx={whichJsx} setWichJsx={setWichJsx} />
-        {whichJsx != 'job' && whichJsx != 'driving_license' && (
-          <input className={'submit-btn'} type={'submit'} value={'Continue'} />
-        )}
+        <VehicleDetail whichJsx={whichJsx} control={control} />
+        <Residence whichJsx={whichJsx} control={control} />
+        <PeopleBeside whichJsx={whichJsx} control={control} />
+        {whichJsx != 'job' &&
+          whichJsx != 'driving_license' &&
+          whichJsx != 'registered_vehicle' && (
+            <input
+              className={'submit-btn'}
+              type={'submit'}
+              value={'Continue'}
+            />
+          )}
       </form>
     </div>
   );

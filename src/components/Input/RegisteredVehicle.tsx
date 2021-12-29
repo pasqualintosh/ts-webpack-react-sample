@@ -21,6 +21,10 @@ const RegisteredVehicle: React.FC<IProps> = ({
     const currentData = getCurrentData();
     setRegistered(param);
     setCurrentData({ ...currentData, registered_vehicle: param });
+
+    console.log(param == 'yes' ? 'vehicle_details' : 'residence');
+    console.log(getCurrentData());
+
     setWichJsx(param == 'yes' ? 'vehicle_details' : 'residence');
   };
 
